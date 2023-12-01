@@ -16,7 +16,8 @@ class App extends Component {
   // state의 값에 따라 화면을 다르게 구성할 수 있음
   state = {
     sampleText: 'Hello World',
-    sampleBoolean: true
+    sampleBoolean: true,
+    sampleNum: 1
   }
 
   // state.sampleBoolean 값이 토글되도록 state 변경하기
@@ -24,28 +25,29 @@ class App extends Component {
     if (!this.state.sampleBoolean) {
       this.setState({
         sampleBoolean: true,
-        sampleText: 'sampleBoolean is True'
+        sampleText: 'sampleBoolean is True!!!!!'
       })
     } else {
       this.setState({
         sampleBoolean: false,
-        sampleText: 'sampleBoolean is False!'
+        sampleText: 'sampleBoolean is False!!!!!'
       })
     }
   }
 
-  inputText = () => (
-    this.state.sampleBoolean ? 
-    <Text>sampleBoolean is True</Text>
-    :
-    <Text>sampleBoolean is False</Text>
-  )
+  onAddNum = () => {
+    this.setState(prevState => {
+      return {
+        sampleNum: prevState.sampleNum + 1
+      }
+    })
+  }
 
   render() {
     return (
       <View style={styles.background}>
-        <Text onPress={this.changeState}>
-          {this.inputText()}
+        <Text onPress={this.onAddNum}>
+          {this.state.sampleNum}
         </Text>
       </View>
     );
