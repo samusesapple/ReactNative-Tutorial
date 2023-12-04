@@ -7,21 +7,22 @@
 
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native'
-
+import Header from './source/header';
 
 class App extends Component {
+
+  state = {
+    appName: '앱 이름 1'
+  }
+
   render() {
     return (
       <View style={styles.mainView}>
-        <View style={styles.subView}>
-          <Text style={styles.mainText}> Hello, World! </Text>
-       </View>
-        <View style={styles.subView}>
-          <Text> Hello, World! </Text>
-        </View>
-       <View style={styles.lastSubView}>
-          <Text style={styles.mainText}> Hello, World! </Text>
-       </View>
+        {/* <Header name={this.state.appName}/> */}
+          <Text
+          style={styles.mainText}
+          onPress={()=>alert('press')}
+          > 여기를 눌러주세요. </Text>
     </View>
     )
   }
@@ -30,13 +31,12 @@ class App extends Component {
 const styles = StyleSheet.create({
   mainView: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center'
   },
   subView: {
-    flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'yellow',
     marginBottom: 10
   },
   lastSubView: {
@@ -48,11 +48,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   mainText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'blue',
-    padding: 20,
-    width: '50%'
+    fontSize: 20,
+    fontWeight: 'normal',
+    color: 'red',
+    padding: 20
   }
 })
 
