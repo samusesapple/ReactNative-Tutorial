@@ -12,7 +12,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 const Header = (props) => (
     <TouchableOpacity
         style={styles.header}
-        onPress={()=>alert('press')}
+        onPress={()=>alert('header 눌림')}
     >
         <View>
               <Text style={styles.mainFont}> {props.name} </Text>
