@@ -10,6 +10,7 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Header from './source/header';
 import Generator from './source/generator';
 import NumberList from './source/numberList';
+import Input from './source/input';
 
 class App extends Component {
 
@@ -20,7 +21,7 @@ class App extends Component {
 
   onAddRandomNum = () => {
     // Math.random()으로 0~1까지의 랜덤 소수 생성 -> 소수 * 100 -> Math.floor로 소수점 이하 버림 -> +1 하여 1~100까지 랜덤 숫자 만들 수 있도록 함
-    const randomNum = Math.floor(Math.random()*100)+1;
+    const randomNum = Math.floor(Math.random() * 100) + 1;
     this.setState(prevState => {
       return {
         numbers: [...prevState.numbers, randomNum]
@@ -28,9 +29,9 @@ class App extends Component {
     })
   }
 
-  onDeleteNum = (removeIndex) => { 
+  onDeleteNum = (removeIndex) => {
     const newNumbers = this.state.numbers.filter((num, index) => {
-        return removeIndex != index;
+      return removeIndex != index;
     })
 
     this.setState(prevState => {
@@ -43,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        <Header name={this.state.appName}/>
+        {/* <Header name={this.state.appName}/>
 
         <View>
         <Text
@@ -63,8 +64,11 @@ class App extends Component {
           delete={this.onDeleteNum}
          />
         </ScrollView>
+         */}
 
-    </View>
+        <Input/>
+
+      </View>
     )
   }
 }
