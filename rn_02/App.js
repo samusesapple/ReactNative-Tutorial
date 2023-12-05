@@ -28,6 +28,18 @@ class App extends Component {
     })
   }
 
+  onDeleteNum = (removeIndex) => { 
+    const newNumbers = this.state.numbers.filter((num, index) => {
+        return removeIndex != index;
+    })
+
+    this.setState(prevState => {
+      return {
+        numbers: newNumbers
+      }
+    })
+  }
+
   render() {
     return (
       <View style={styles.mainView}>
@@ -42,7 +54,10 @@ class App extends Component {
           
         <Generator action={this.onAddRandomNum}/>
 
-        <NumberList numbers={this.state.numbers}/>
+        <NumberList 
+        numbers={this.state.numbers}
+        delete={this.onDeleteNum}
+        />
     </View>
     )
   }

@@ -6,15 +6,20 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 
 const NumberList = (props) => {
     return (
       props.numbers.map ((item, index)=> (
-        <View style={styles.numberList} key={index}>
-          <Text>랜덤 숫자: {item}</Text>
-        </View>
+        <TouchableOpacity
+        style={styles.numberList} 
+        key={index}
+        onPress={()=>props.delete(index)}
+        >
+            <Text>랜덤 숫자: {item}</Text>
+        </TouchableOpacity>
+
       ))
     
     )
@@ -26,7 +31,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: '5',
     width: '100%',
-    marginTop: 10
+    marginTop: 5
   }
 })
 

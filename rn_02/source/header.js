@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink',
     alignItems: 'center',
     padding: 5,
-    width: '80%'
+    width: '100%',
+    marginTop: 40
   },
   mainFont: {
     fontSize: 20
