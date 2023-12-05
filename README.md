@@ -47,14 +47,14 @@ React Native 기초 내용을 학습하며 배운 내용을 기록합니다.
         class App extends Component {
           render() {
             return (
-              **<View style={{ 
+              <View style={{ 
         			background: 'green',
-        			marginTop: 50,** // **view 외부** 다른 컴포넌트의 top 간격
-        			**paddingTop: 10**, // **view 내부** 속하는 다른 컴포넌트의 top 간격
+        			marginTop: 50, // view 외부 다른 컴포넌트의 top 간격
+                    paddingTop: 10, // view 내부 속하는 다른 컴포넌트의 top 간격
         			height: '100%' // 100프로 화면 높이 채우기 
-        		**}}>** 
+        		}}>
                   <Text> Hello, World! </Text>
-            **</View>**
+            </View>
             )
           }
         }
@@ -73,7 +73,7 @@ React Native 기초 내용을 학습하며 배운 내용을 기록합니다.
         class App extends Component {
           render() {
             return (
-              **<View style={styles.mainView}>**
+              <View style={styles.mainView}>
                   <Text> Hello, World! </Text>
         	    </View>
             )
@@ -84,8 +84,8 @@ React Native 기초 내용을 학습하며 배운 내용을 기록합니다.
           mainView: {
             flex: 1,
             backgroundColor: 'green',
-            **alignItems: 'center', // 수직 정렬
-            justifyContent: 'center' // 수평 정렬**
+            alignItems: 'center', // 수직 정렬
+            justifyContent: 'center' // 수평 정렬
           }
         })
      ```
@@ -175,8 +175,8 @@ React Native 기초 내용을 학습하며 배운 내용을 기록합니다.
                 style={styles.generator}
                 >
                     <Button
-        								**onPress={()=>alert('button pressed')}**
-                        **title='Add Numbers'** 
+                        onPress={()=>alert('button pressed')}
+                        title='Add Numbers'
                     />
                 </View>
             )
@@ -227,7 +227,7 @@ React Native 기초 내용을 학습하며 배운 내용을 기록합니다.
                 style={styles.generator}
                 >
                     <Button
-                        **onPress={()=>props.action()}**
+                        onPress={()=>props.action()}
                         title='Add Numbers'
                     />
                 </View>
@@ -270,7 +270,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 const Header = (props) => (
     <TouchableOpacity
-        **style={styles.header}   << 터치되는 view 스타일 적용**
+        style={styles.header}   << 터치되는 view 스타일 적용
         onPress={()=>alert('얼럿내용')} << 터치하면 alert창 띄우도록
     >
         <View>
@@ -315,10 +315,10 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-          **<Text
+          <Text
           style={styles.mainText}
-          onPress={()=>alert('press')}**
-          > 여기를 눌러주세요. **</Text>**
+          onPress={()=>alert('press')}
+          > 여기를 눌러주세요. </Text>
     </View>
     )
   }
@@ -334,12 +334,12 @@ class App extends Component {
 
 > state는 class 안에서만 정의할 수 있으며, state에 따라 다른 화면을 그릴 수 있도록 설계한다.
 > 
-- **state값은 직접적으로 변경하면 안된다.**
+- state값은 직접적으로 변경하면 안된다.
     - state는 rendering되는 데이터를 관리한다. 직접 변경 X
     
     → 직접 변경하면 화면이 다시 rendering 되지 않기에 해당 값이 화면에 반영 안됨.
     
-- `**setState({ 변경 내용 })` 를 통해 state값을 변경**해야한다.
+- `setState({ 변경 내용 })` 를 통해 state값을 변경 해야한다.
     
     ```jsx
     	// state는 class 내부에서만 사용 가능, render() 전에 선언
@@ -352,23 +352,23 @@ class App extends Component {
       // state.sampleBoolean 값이 토글되도록 state 변경하기
       changeState = () => {
         if (!this.state.sampleBoolean) {
-          **this.setState({**
+          this.setState({
             sampleBoolean: true,
     				sampleText: 'TRUE!'
-          **})**
+          })
         } else {
-          **this.setState({**
+          this.setState({
             sampleBoolean: false,
     				sampleText: 'FALSE!'
-          **})**
+          })
         }
       }
     
     	render() {
         return (
           <View style={styles.background}>
-            <Text **onPress={this.changeState}**> <- 텍스트가 눌리면 changeState()호출
-              **{this.state.sampleText}**   <- changeState()에 의해 변경된 text 보여줌
+            <Text onPress={this.changeState}> <- 텍스트가 눌리면 changeState()호출
+              {this.state.sampleText}   <- changeState()에 의해 변경된 text 보여줌
             </Text>
           </View>
         );
@@ -389,13 +389,13 @@ class App extends Component {
         })
       }
     
-    // 올바른 사용법 - 이전 state값인 **prevState를 활용한 콜백함수 사용**
+    // 올바른 사용법 - 이전 state값인 prevState를 활용한 콜백함수 사용
     onAddNum = () => {
-    		**this.setState(prevState => {
+    		this.setState(prevState => {
     		return {
     			sampleNum: prevState.sampleNum + 1
     		}	
-    	})**
+    	})
     }
     ```
 <br>
@@ -420,13 +420,13 @@ class App extends Component {
     
       state = {
     		// 물려줄 것 1
-        **sampleText: 'Hello World',**
+        sampleText: 'Hello World',
         sampleBoolean: true,
         sampleNum: 1
       }
     
       // 물려줄 것 2
-      **changeState = ()** => {
+      changeState = () => {
         if (!this.state.sampleBoolean) {
           this.setState({
             sampleBoolean: true,
@@ -443,8 +443,8 @@ class App extends Component {
       render() {
         return (
           <View style={styles.background}>
-    **물려주기 + 자식으로 화면 그리기 (props에 들어갈 motherSampleText, motherChangeState 정의해서 줌**)
-            **<PropsChild motherSampleText={this.state.sampleText} motherChangeState={this.changeState}/>**
+    물려주기 + 자식으로 화면 그리기 (props에 들어갈 motherSampleText, motherChangeState 정의해서 줌)
+            <PropsChild motherSampleText={this.state.sampleText} motherChangeState={this.changeState}/>
           </View>
         )
       }
@@ -453,14 +453,14 @@ class App extends Component {
     
     ```jsx
     // 부모 객체(App)로부터 물려받은 데이터를 props 인수로 받음 
-    // (props 인수 안에 .**motherChangeState**, .**motherSampleText** 데이터 물려받음)
+    // (props 인수 안에 .motherChangeState, .motherSampleText 데이터 물려받음)
     
     // 파라미터를 통해 물려받은 props로 text 터치 액션 지정, text 데이터 지정
-    const PropsChild = **(props)** => {
+    const PropsChild = (props) => {
         return (
             <View>
-                <Text **onPress={props.motherChangeState}**>
-                    **{props.motherSampleText}**
+                <Text onPress={props.motherChangeState}>
+                    {props.motherSampleText}
                 </Text>
             </View>
         )
@@ -487,8 +487,8 @@ class App extends Component {
         ```jsx
         const NumberListView = (props) => {
             return (
-              **props.numbers.map ((item, index)=>** (
-                <View style={styles.numberList} **key={index}**>
+              props.numbers.map ((item, index)=> (
+                <View style={styles.numberList} key={index}>
                   <Text>랜덤 숫자: {item}</Text>
                 </View>
               ))
