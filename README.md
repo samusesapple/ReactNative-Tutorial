@@ -1,5 +1,5 @@
 # ReactNative-Tutorial
-React Native 기초 내용을 학습하며 배운 내용을 기록합니다.
+React Native 기초 내용을 기록합니다.
 <br>
 <br>
 <br>
