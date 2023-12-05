@@ -29,9 +29,9 @@ const styles = StyleSheet.create({
   numberList: {
     backgroundColor: '#cecccc',
     alignItems: 'center',
-    padding: '5',
+    padding: '10',
     width: '100%',
-    marginTop: 5
+    marginTop: 5,
   }
 })
 

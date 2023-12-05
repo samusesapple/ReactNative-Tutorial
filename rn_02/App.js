@@ -6,7 +6,7 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Header from './source/header';
 import Generator from './source/generator';
 import NumberList from './source/numberList';
@@ -54,10 +54,16 @@ class App extends Component {
           
         <Generator action={this.onAddRandomNum}/>
 
-        <NumberList 
-        numbers={this.state.numbers}
-        delete={this.onDeleteNum}
-        />
+        <ScrollView
+          style={{width: "100%"}}
+          onContentSizeChange={(width, height)=>alert(height)}
+        >
+          <NumberList 
+          numbers={this.state.numbers}
+          delete={this.onDeleteNum}
+         />
+        </ScrollView>
+
     </View>
     )
   }
