@@ -238,6 +238,58 @@ React Native 기초 내용을 기록합니다.
 <br>
 <br>
 
+#### TextInput (aka TextField)
+
+> 1. `import TextInput from ‘react-native’`
+> 2. `<TextInput 
+value={this.state.textInput}
+style={styles.textInputStyle}
+기타 설정들
+/>`
+> 
+- 기본적으로 `value`라는 값을 넘겨줌 (textfield의 text값에 대한 value)
+
+```jsx
+// State를 활용할 것이기 때문에 class로 컴포넌트 선언
+class Input extends Component {
+
+    state = {
+        textInput: 'placeholder' // textField에 최초로 들어가있을 String값
+    }
+
+    onUpdateInputText = (newText) => {
+        this.setState({
+            textInput: newText
+        })
+    }
+
+    render() {
+        return (
+            <View
+            style={styles.mainView}>
+                **<TextInput
+                value={this.state.textInput} 
+                style={styles.input}
+                onChangeText={(newValue)=>this.onUpdateInputText(newValue)}
+                multiline={true}
+                maxLength={12}
+                autoCapitalize='words'
+                editable={false}
+                 />
+            </View>
+            
+        )
+    }
+}
+```
+
+- onChangeText : Input Text가 변경 될 때마다 호출되는 메서드로 변경된Text를 인자로 줌
+- multiline={true} : 줄이 길어지면 개행되도록 설정
+- editable={false} : textField 수정 불가능하도록 설정
+<br>
+<br>
+
+
 ### Touch Event
 ---
 
@@ -496,4 +548,12 @@ class App extends Component {
             )
         }
         ```
+<br>
+<br>
+<br>
+
+### 구현 화면
+---
+![Simulator Screen Recording - iPhone Xs - 2023-12-06 at 13 53 08](https://github.com/samusesapple/ReactNative-Tutorial/assets/126672733/9054c2fb-a769-4db7-9eab-e82896833069)
+
 
