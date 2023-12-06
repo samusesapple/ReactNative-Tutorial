@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 
-// State를 활용할 것이기 때문에 class로 컴포넌트 선언
+
 const NewTextInput = (props) => {
     return (
         <View

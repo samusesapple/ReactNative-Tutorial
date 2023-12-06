@@ -28,10 +28,11 @@ const TextList = (props) => {
 const styles = StyleSheet.create({
   textList: {
     backgroundColor: '#cecccc',
-    alignItems: 'center',
-    padding: '10',
+    alignItems: 'left',
+    padding: 20,
     width: '100%',
     marginTop: 5,
+    
   }
 })
 

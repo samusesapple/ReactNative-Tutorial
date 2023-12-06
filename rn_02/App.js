@@ -6,12 +6,14 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
 import Header from './source/header';
 
 import NewTextInput from './source/NewTextInput';
 import AddTextButton from './source/AddTextButton';
 import TextList from './source/TextList';
+import PickerComponent from './source/PickerComponent';
+
 
 class App extends Component {
 
@@ -33,11 +35,12 @@ class App extends Component {
     const newText = this.state.inputText
     if (newText.length > 0) {
       this.setState(prevState => {
-       return {
-         textArray: [...prevState.textArray, newText]
-       }
+        return {
+          inputText: '', // 버튼 눌리면 textField의 글자 다 지워지도록
+          textArray: [...prevState.textArray, newText]
+        }
       })
-    } 
+    }
   }
 
   onDeleteText = (removeIndex) => {
@@ -54,13 +57,15 @@ class App extends Component {
 
   render() {
     return (
-      <View style={styles.mainView}>
-        
-        <Header name={this.state.appName}/>
+      <SafeAreaView style={styles.mainView}>
+
+        <PickerComponent/>
+
+        <Header name={this.state.appName} />
 
         <NewTextInput
-        text={this.state.inputText}
-        changeText={this.onChangeText}
+          text={this.state.inputText}
+          changeText={this.onChangeText}
         />
 
         <AddTextButton
@@ -68,16 +73,16 @@ class App extends Component {
         />
 
         <ScrollView
-          style={{width: "100%"}}
-          // onContentSizeChange={(width, height)=>alert(height)}
+          style={{ width: "100%" }}
+        // onContentSizeChange={(width, height)=>alert(height)}
         >
-          <TextList 
-          textList={this.state.textArray}
-          delete={this.onDeleteText}
-         />
+          <TextList
+            textList={this.state.textArray}
+            delete={this.onDeleteText}
+          />
         </ScrollView>
-        
-      </View>
+
+      </SafeAreaView>
     )
   }
 }
