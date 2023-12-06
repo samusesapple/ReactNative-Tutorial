@@ -9,15 +9,15 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 
-const NumberList = (props) => {
+const TextList = (props) => {
     return (
-      props.numbers.map ((item, index)=> (
+      props.textList.map ((item, index)=> (
         <TouchableOpacity
-        style={styles.numberList} 
+        style={styles.textList} 
         key={index}
         onPress={()=>props.delete(index)}
         >
-            <Text>랜덤 숫자: {item}</Text>
+            <Text>{item}</Text>
         </TouchableOpacity>
 
       ))
@@ -26,7 +26,7 @@ const NumberList = (props) => {
 }
 
 const styles = StyleSheet.create({
-  numberList: {
+  textList: {
     backgroundColor: '#cecccc',
     alignItems: 'center',
     padding: '10',
@@ -35,4 +35,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default NumberList;
+export default TextList;

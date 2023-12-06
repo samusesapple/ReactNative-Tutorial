@@ -8,35 +8,46 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import Header from './source/header';
-import Generator from './source/generator';
-import NumberList from './source/numberList';
-import Input from './source/input';
+
+import NewTextInput from './source/NewTextInput';
+import AddTextButton from './source/AddTextButton';
+import TextList from './source/TextList';
 
 class App extends Component {
 
   state = {
     appName: '앱 이름 1',
-    numbers: [12, 13, 11, 10]
+    textArray: [],
+    inputText: ''
   }
 
-  onAddRandomNum = () => {
-    // Math.random()으로 0~1까지의 랜덤 소수 생성 -> 소수 * 100 -> Math.floor로 소수점 이하 버림 -> +1 하여 1~100까지 랜덤 숫자 만들 수 있도록 함
-    const randomNum = Math.floor(Math.random() * 100) + 1;
+  onChangeText = (newText) => {
     this.setState(prevState => {
       return {
-        numbers: [...prevState.numbers, randomNum]
+        inputText: newText
       }
     })
   }
 
-  onDeleteNum = (removeIndex) => {
-    const newNumbers = this.state.numbers.filter((num, index) => {
+  onAddText = () => {
+    const newText = this.state.inputText
+    if (newText.length > 0) {
+      this.setState(prevState => {
+       return {
+         textArray: [...prevState.textArray, newText]
+       }
+      })
+    } 
+  }
+
+  onDeleteText = (removeIndex) => {
+    const newTextList = this.state.textArray.filter((text, index) => {
       return removeIndex != index;
     })
 
     this.setState(prevState => {
       return {
-        numbers: newNumbers
+        textArray: newTextList
       }
     })
   }
@@ -44,30 +55,28 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainView}>
-        {/* <Header name={this.state.appName}/>
+        
+        <Header name={this.state.appName}/>
 
-        <View>
-        <Text
-          style={styles.mainText}
-          onPress={()=>alert('mainText 눌림')}
-          > 여기를 눌러주세요. </Text>
-        </View>
-          
-        <Generator action={this.onAddRandomNum}/>
+        <NewTextInput
+        text={this.state.inputText}
+        changeText={this.onChangeText}
+        />
+
+        <AddTextButton
+          action={this.onAddText}
+        />
 
         <ScrollView
           style={{width: "100%"}}
-          onContentSizeChange={(width, height)=>alert(height)}
+          // onContentSizeChange={(width, height)=>alert(height)}
         >
-          <NumberList 
-          numbers={this.state.numbers}
-          delete={this.onDeleteNum}
+          <TextList 
+          textList={this.state.textArray}
+          delete={this.onDeleteText}
          />
         </ScrollView>
-         */}
-
-        <Input/>
-
+        
       </View>
     )
   }

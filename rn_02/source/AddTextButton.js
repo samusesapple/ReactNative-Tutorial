@@ -6,17 +6,17 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button, Alert } from 'react-native'
+import { View, Text, StyleSheet, Button } from 'react-native'
 
 
-const Generator = (props) => {
+const AddTextButton = (props) => {
     return (
         <View
         style={styles.generator}
         >
             <Button
                 onPress={()=>props.action()}
-                title='Add Numbers'
+                title='Add Text'
             />
         </View>
     )
@@ -26,8 +26,10 @@ const styles = StyleSheet.create({
     generator: {
         backgroundColor: '#10CDFF',
         padding: 5,
-        width: '100%'
+        width: '60%',
+        marginTop: 20,
+        marginBottom: 20
     }
 })
 
-export default Generator;
+export default AddTextButton;
