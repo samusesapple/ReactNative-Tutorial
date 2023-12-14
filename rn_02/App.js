@@ -6,7 +6,7 @@
  */
 
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, ActivityIndicator } from 'react-native'
 import Header from './source/header';
 
 import NewTextInput from './source/NewTextInput';
@@ -14,13 +14,21 @@ import AddTextButton from './source/AddTextButton';
 import TextList from './source/TextList';
 import PickerComponent from './source/PickerComponent';
 
+import MyImage from './assets/images/myImage.jpeg'
 
 class App extends Component {
 
   state = {
     appName: '앱 이름 1',
     textArray: [],
-    inputText: ''
+    inputText: '',
+    isLoading: true
+  }
+
+  onLoadEnd = () => {
+    this.setState({
+      isLoading: false
+    })
   }
 
   onChangeText = (newText) => {
@@ -59,7 +67,20 @@ class App extends Component {
     return (
       <SafeAreaView style={styles.mainView}>
 
-        <PickerComponent/>
+        <Image
+          style={styles.image}
+          source={{uri: 'https://picsum.photos/200/300'}}
+          resizeMode='cover'
+          onLoadEnd={ this.onLoadEnd }
+        />
+
+        <ActivityIndicator
+          size='large'
+          color='red'
+          animating={this.state.isLoading}
+        />
+      
+        {/* <PickerComponent/>
 
         <Header name={this.state.appName} />
 
@@ -80,7 +101,7 @@ class App extends Component {
             textList={this.state.textArray}
             delete={this.onDeleteText}
           />
-        </ScrollView>
+        </ScrollView> */}
 
       </SafeAreaView>
     )
@@ -111,6 +132,10 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     color: 'red',
     padding: 20
+  },
+  image: {
+    width: "80%",
+    height: 300
   }
 })
 
