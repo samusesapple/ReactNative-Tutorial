@@ -14,7 +14,9 @@ import AddTextButton from './source/AddTextButton';
 import TextList from './source/TextList';
 import PickerComponent from './source/PickerComponent';
 
-import MyImage from './assets/images/myImage.jpeg'
+import MyImage from './assets/images/myImage.jpeg';
+
+import Modal from './source/modal';
 
 class App extends Component {
 
@@ -67,19 +69,7 @@ class App extends Component {
     return (
       <SafeAreaView style={styles.mainView}>
 
-        <Image
-          style={styles.image}
-          source={{uri: 'https://picsum.photos/200/300'}}
-          resizeMode='cover'
-          onLoadEnd={ this.onLoadEnd }
-        />
-
-        <ActivityIndicator
-          size='large'
-          color='red'
-          animating={this.state.isLoading}
-        />
-      
+        <Modal/>
         {/* <PickerComponent/>
 
         <Header name={this.state.appName} />
