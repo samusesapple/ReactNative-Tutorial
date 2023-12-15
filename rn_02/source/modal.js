@@ -31,7 +31,8 @@ class ModalComponent extends Component {
                 <Modal
                     visible={this.state.showModal} // modal이 보일지 여부에 대한 상태값
                     animationType={'slide'}  // 모달이 어떻게 나타날지에 대한 값 (slide, fade)
-                    onShow={()=> alert('모달 나타남')} // a
+                    onShow={()=> alert('모달 나타남')} // 모달이 나타난 후에 실행되는 액션을 여기에 정의
+                    onDismiss={()=> alert('모달 사라짐')} // 모달이 사라진 후에 실행되는 액션을 여기에 정의
                 >
                     <View style={{
                         marginTop: 60,
