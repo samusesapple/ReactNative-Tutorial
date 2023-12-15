@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName='Home'> 
            {/* 각 화면에 props.navigation을 자동으로 넘겨주게 됨 */}
           <Stack.Screen name='Home' component={HomeScreen} />
           <Stack.Screen name='User' component={UserScreen} />
