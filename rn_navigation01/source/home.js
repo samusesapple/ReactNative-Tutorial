@@ -23,6 +23,19 @@ class HomeScreen extends Component {
                         })
                     }}
                 />
+
+                <Button
+                    title='헤더 이름 바꾸기'
+                    onPress={() =>
+                        this.props.navigation.setOptions({
+                            title: '홈 헤더 바꾸기',
+                            headerStyle: {
+                                backgroundColor: 'pink'
+                            },
+                            headerTintColor: 'blue'
+                        })
+                    }
+                />
             </View>
         );
     }

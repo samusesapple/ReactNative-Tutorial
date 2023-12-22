@@ -9,7 +9,23 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
 class UserScreen extends Component {
+
+    headerStyle = () => {
+        this.props.navigation.setOptions({
+            title: '유저 화면',
+            headerStyle: {
+                backgroundColor: 'yellow'
+            },
+            headerTintColor: 'blue',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                color: 'green'
+            }
+        })
+    }
+
     render() {
+        this.headerStyle();
         // const {params} = this.props.route;
         // const userIndex = params ? params.userIndex : 0;
         // const userName = params ? params.userName : "이름 없음";

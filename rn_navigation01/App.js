@@ -20,8 +20,31 @@ class App extends Component {
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Home'> 
            {/* 각 화면에 props.navigation을 자동으로 넘겨주게 됨 */}
-          <Stack.Screen name='Home' component={HomeScreen} />
-          <Stack.Screen name='User' component={UserScreen} />
+          <Stack.Screen 
+          name='Home' 
+          component={HomeScreen} 
+          options={{title: '홈'}}
+          />
+          <Stack.Screen 
+          name='User' 
+          component={UserScreen} 
+          initialParams={{
+            userIdx: 0,
+            userName: "Default",
+            userLastName: ""
+          }}
+          options={{
+            title: '유저 화면',
+            headerStyle: {
+                backgroundColor: 'pink'
+            },
+            headerTintColor: 'blue',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              color: 'green'
+            }
+          }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );
