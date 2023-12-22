@@ -25,7 +25,7 @@ class UserScreen extends Component {
     }
 
     render() {
-        this.headerStyle();
+        // this.headerStyle();
         // const {params} = this.props.route;
         // const userIndex = params ? params.userIndex : 0;
         // const userName = params ? params.userName : "이름 없음";
